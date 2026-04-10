@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<title>Menu</title>
+
+<style>
+body {
+    font-family: Arial;
+    background: #1e293b;
+    color: white;
+    text-align: center;
+    margin: 0;
+}
+
+/* kontener */
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+}
+
+/* kafelki */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 220px);
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.tile {
+    background: #334155;
+    padding: 40px 20px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.tile:hover {
+    background: #475569;
+    transform: scale(1.05);
+}
+
+/* submenu */
+.submenu {
+    display: none;
+    margin-top: 30px;
+}
+
+.submenu button {
+    display: block;
+    margin: 10px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* powrót */
+.back {
+    margin-top: 20px;
+}
+
+/* stopka */
+.footer {
+    position: fixed;
+    bottom: 10px;
+    width: 100%;
+    font-size: 10px;
+}
+
+.footer a {
+    color: lightblue;
+    text-decoration: none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1 id="title">Wybierz kategorię</h1>
+
+    <!-- KAFELKI -->
+    <div id="mainMenu" class="grid">
+        <div class="tile" onclick="showMenu('testy')">Testy cząstkowe</div>
+        <div class="tile" onclick="showMenu('egzamin')">Egzamin końcowy</div>
+        <div class="tile" onclick="showMenu('ulc')">Pytania ULC</div>
+    </div>
+
+    <!-- TESTY -->
+    <div id="testy" class="submenu">
+    <button onclick="location.href='test.html#test0'">Test 0</button>
+    <button onclick="location.href='test.html#test1'">Test 1</button>
+    <button onclick="location.href='test.html#test2'">Test 2</button>
+    <button onclick="location.href='test.html#test3'">Test 3</button>
+    <button onclick="location.href='test.html#test4'">Test 4</button>
+    <button onclick="location.href='test.html#test5'">Test 5</button>
+    <button onclick="location.href='test.html#test6'">Test 6</button>
+
+    <button class="back" onclick="back()">⬅ Powrót</button>
+</div>
+    <!-- EGZAMIN -->
+    <div id="egzamin" class="submenu">
+        <button onclick="location.href='index.html'">Egzamin końcowy - zestaw 3</button>
+        <button onclick="location.href='index.html#losowy'">Losowy test</button>
+        <button class="back" onclick="back()">⬅ Powrót</button>
+    </div>
+    <div id="ulc" class="submenu">
+    <button onclick="location.href='index.html#ulc'">Pytania ULC</button>
+    <button onclick="location.href='index.html#ulc-random'">Losowe pytania ULC</button>
+    <button class="back" onclick="back()">⬅ Powrót</button>
+</div>
+
+</div>
+
+<!-- STOPKA -->
+<div class="footer">
+    <a href="https://buycoffee.to/davidoff" target="_blank">
+        Postaw kawę – zrzutka
+    </a>
+</div>
+
+<script>
+function showMenu(menu){
+    document.getElementById("mainMenu").style.display = "none";
+    document.getElementById("title").innerText = "Wybierz test";
+    document.getElementById(menu).style.display = "block";
+}
+
+function back(){
+    document.getElementById("mainMenu").style.display = "grid";
+    document.getElementById("title").innerText = "Wybierz kategorię";
+
+    document.querySelectorAll(".submenu").forEach(el=>{
+        el.style.display = "none";
+    });
+}
+
+</script>
+
+</body>
+</html>
